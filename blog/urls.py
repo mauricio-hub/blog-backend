@@ -19,6 +19,7 @@ from django.urls import path ,include
 from drf_yasg import openapi
 from drf_yasg.views import get_schema_view
 from categories.api.router import router_categories
+from post.api.router import router_post
 
 schema_view = get_schema_view(
    openapi.Info(
@@ -42,5 +43,6 @@ urlpatterns = [
     #rutas app blog
     path('api/', include('users.api.router')),
     path('api/', include(router_categories.urls)), 
+    path('api/', include(router_post.urls)),
 
 ]
