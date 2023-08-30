@@ -10,7 +10,7 @@ class CategoryViewSet(ModelViewSet):
     serializer_class = CategorySerializer
     #  esto es lo que se va a mostrar en la api publicadas y no publicadas 
     # queryset = Category.objects.all()
-    #  esto es lo que se va a mostrar en la api solo las publicadas
+    #  esto es lo que se va a mostrar en la api solo las publicadas es un filtro
     queryset = Category.objects.filter(published=True)
     # serializer_class = CategorySerializer
     # permission_classes = [IsAuthenticatedOrReadOnly]
