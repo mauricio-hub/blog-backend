@@ -22,6 +22,9 @@ from categories.api.router import router_categories
 from post.api.router import router_post
 from comments.api.router import router_comments
 
+from django.conf import settings
+from django.conf.urls.static import static
+
 schema_view = get_schema_view(
    openapi.Info(
       title="Blog API",
@@ -48,3 +51,7 @@ urlpatterns = [
     path('api/', include(router_comments.urls)),
 
 ]
+
+# Configuración de rutas estáticas para las imágenes
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
