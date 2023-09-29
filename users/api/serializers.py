@@ -2,11 +2,11 @@ from rest_framework import serializers
 from users.models import User
 
 # este serializador crea un usuario
-class UserRegisterSerilizer(serializers.ModelSerializer):
+class UserRegisterSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = ['id','email','username','password']
-    #     extra_kwargs = {'password': {'write_only': True}}
+        extra_kwargs = {'password': {'write_only': True}}
 
     def create(self, validated_data):
         password = validated_data.pop('password',None)
@@ -19,7 +19,7 @@ class UserRegisterSerilizer(serializers.ModelSerializer):
 class UserSerializer(serializers.ModelSerializer):
        class Meta:
         model = User
-        fields = ['id','email','username','password']
+        fields = ['id','email','username']
         
 
 class UserUpdateSerializer(serializers.ModelSerializer):

@@ -3,13 +3,13 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from users.models import User
 from rest_framework.permissions import IsAuthenticated
-from users.api.serializers import UserRegisterSerilizer, UserSerializer, UserUpdateSerializer
+from users.api.serializers import UserRegisterSerializer, UserSerializer, UserUpdateSerializer
 from users.models import User
 
 #esta vista crea un usuario
 class RegisterView(APIView):
     def post(self, request):
-        serializer = UserRegisterSerilizer(data=request.data)
+        serializer = UserRegisterSerializer(data=request.data)
         if serializer.is_valid(raise_exception=True):
             serializer.save()
             return Response(serializer.data)
